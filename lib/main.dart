@@ -1,9 +1,8 @@
-import 'dart:io';
+
 
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo/file_fruits.dart';
+import 'package:todo/large_file.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: const FruiteApp());
+        home: const LargeFile());
   }
 }
 

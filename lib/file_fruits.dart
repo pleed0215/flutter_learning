@@ -36,10 +36,11 @@ class _FruiteAppState extends State<FruiteApp> {
     }
   }
 
-  void writeListFile() async {
+  void writeListFile(String fruit) async {
     var dir = await getApplicationDocumentsDirectory();
     var file = await File(dir.path + _fileName).readAsString();
-    file = file + '\n' + _todoItemController!.value.text;
+    file = file + '\n' + fruit;
+    print(file);
     File(dir.path + _fileName).writeAsStringSync(file);
   }
 
@@ -95,7 +96,16 @@ class _FruiteAppState extends State<FruiteApp> {
         ))
       ])),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          var item = _todoItemController!.value.text;
+          if (item.isNotEmpty) {
+            writeListFile(item);
+            setState(() {
+              itemList.add(item);
+            });
+            _todoItemController!.clear();
+          }
+        },
         child: const Icon(Icons.add),
       ),
     );
