@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todo/large_file.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -48,7 +49,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('SharedPreferred Test')),
+      appBar: AppBar(
+        title: const Text('로고 바꾸기'),
+        actions: [
+          TextButton(onPressed: (){
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context)=>const LargeFile())
+            );
+          }, child: const Text("로고 바꾸기", style: TextStyle(color: Colors.white)))
+        ],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
